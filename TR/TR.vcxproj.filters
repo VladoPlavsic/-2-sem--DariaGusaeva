@@ -21,10 +21,25 @@
     <ClCompile Include="src\list\tree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\list\treeconsole.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\additional\filereader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\list\tree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\list\treeconsole.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\additional\filereader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\information\example1.txt" />
   </ItemGroup>
 </Project>

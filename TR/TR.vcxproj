@@ -142,11 +142,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\additional\filereader.cpp" />
     <ClCompile Include="src\list\tree.cpp" />
+    <ClCompile Include="src\list\treeconsole.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\additional\filereader.h" />
     <ClInclude Include="src\list\tree.h" />
+    <ClInclude Include="src\list\treeconsole.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\information\example1.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

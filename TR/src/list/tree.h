@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <string>
 
 struct Values
 {
@@ -10,7 +11,6 @@ struct Values
 	std::string m_Date;
 	std::string m_Death;
 	std::string m_Place;
-
 };
 
 struct Human {
@@ -23,13 +23,15 @@ struct Human {
 	std::string m_Death;
 	std::string m_Place;
 
+	bool m_Printed = false;
+
 	//связы
 	Human* m_Left;
 	Human* m_Right;
 	Human* m_Parent;
 
 	//конструктор
-	Human(Values values, Human* left, Human* right, Human* parent)
+	Human(const Values& values, Human* left, Human* right, Human* parent)
 	{
 		m_MiddleName = values.m_MiddleName;
 		m_Name = values.m_Name;
@@ -44,20 +46,6 @@ struct Human {
 		m_Parent = parent;
 	}
 
-	/*
-	Human()
-	{
-		m_MiddleName = "";
-		m_Name = "";
-		m_LastName = "";
-		m_Date = "";
-		m_Death = "";
-		m_Place = "";
-		m_Left = nullptr;
-		m_Right = nullptr;
-		m_Parent = nullptr;
-	}
-	*/
 };
 
 struct Tree {
@@ -65,16 +53,18 @@ struct Tree {
 	Human* m_First;
 	Human* m_Current;
 
-	Tree();
-
-	void CreateFirst(Values value);
+	//создание пустого дерева
+	void CreateFirst(const Values& value);
+	//сделать текущим корень дерева;
 	void Root();
+	//сделать текущим левое поддерево
 	void Left();
+	//сделать текущим правое поддерево 
 	void Right();
-	//сделать текущим родительскую вершину для текущей вершины(для удобства можно в способе 1 ввести третью связь – обратную связь с родительской вершиной, чтобы не искать ее по всему дереву – Трёхсвязный список);
+	//сделать текущим родительскую вершину для текущей вершины
 	void Parent();
 	//узнать значение текущей вершины;
-	void GetValue();
+	void GetValue(const char& c);
 	void ChangeName(std::string* name);
 	void ChangeSurname(std::string* middleName);
 	void ChangeLastName(std::string* lastName);
@@ -82,15 +72,22 @@ struct Tree {
 	void ChangeDeath(std::string* death);
 	void ChangePlace(std::string* place);
 	//изменить значение текущей вершины;
-	void ChangeAll(Values human);
+	void ChangeAll(const Values& human);
 	//создать левое поддерево для текущей вершины;
-	void AddLeft(Values human);
+	void AddLeft(const Values& human);
 	//создать правое поддерево для текущей вершины;
-	void AddRight(Values human);
+	void AddRight(const Values& human);
 	//проверка на пустоту дерева(поддерева, начинающегося с текущей вершины);
 	bool CheckIfEmpty();
+	//Удалить дерево
+	void Delete();
+	//Самый левый элемент
+	void LeftMost();
+	void CreateFromFile();
+	bool CompareDates(const std::string* date_root, const std::string* date_new);
+	void AddByKey(const Values& human);
+	void PrintByAge();
+	bool Printed();
+	void PrintRoot();
+	void ResetPrint();
 };
-
-/*
-- сделать текущим (по адресу в списке или индексу в массиве) корень дерева;
-*/
