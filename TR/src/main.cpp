@@ -1,7 +1,8 @@
-#include "list/treeconsole.h"
+#include "logging/console.h"
 #include "additional/filereader.h"
+#include <windows.h>
 
-void Header() {
+void MainHeader() {
 	printf("=====================================================\n"
 		   "Здравствуйте! Пожалуйстя выберите задание!\n"
 		   "«Бинарное дерево»:\n"
@@ -13,19 +14,20 @@ void Header() {
 
 int main()
 {
-	Header();
+	setlocale(LC_ALL, "Russian");
+	SetConsoleOutputCP(1251);
+
+	MainHeader();
 	char task;
 	std::cin >> task;
 	while (task != 'E') {
 		if (task == '1')
-			tree::ProgramLoop();
+			ProgramLoop(&task);
 		else if (task == '2')
-			NULL;
+			ProgramLoop(&task);
 		else
 			printf("Неверный ввод!");
-		Header();
+		MainHeader();
 		std::cin >> task;
 	}
-
-
 }

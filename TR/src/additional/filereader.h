@@ -1,10 +1,10 @@
 #pragma once
-#include "../list/treeconsole.h"
+#include "../logging/console.h"
 #include <iostream>
 
 struct File
 {
-	FILE* m_pFile = fopen("../informaton/example1.txt", "r");
+	FILE* m_pFile;
 	std::string m_Result;
 	unsigned long m_Size;
 	unsigned long m_Position;
@@ -13,6 +13,7 @@ struct File
 	File(FILE* pFile);
 	void ToObject(Values* values);
 	char* ReadLine();
+	bool GenTree(Values* values);
 
 	~File()
 	{

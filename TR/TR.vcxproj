@@ -142,18 +142,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\additional\calculator.cpp" />
     <ClCompile Include="src\additional\filereader.cpp" />
+    <ClCompile Include="src\array\array.cpp" />
     <ClCompile Include="src\list\tree.cpp" />
-    <ClCompile Include="src\list\treeconsole.cpp" />
+    <ClCompile Include="src\logging\console.cpp" />
+    <ClCompile Include="src\logging\file.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\additional\calculator.h" />
     <ClInclude Include="src\additional\filereader.h" />
+    <ClInclude Include="src\additional\values.h" />
+    <ClInclude Include="src\array\array.h" />
     <ClInclude Include="src\list\tree.h" />
-    <ClInclude Include="src\list\treeconsole.h" />
+    <ClInclude Include="src\logging\console.h" />
+    <ClInclude Include="src\logging\file.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\information\example1.txt" />
+    <Text Include="src\information\example2.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "filereader.h"
 
 File::File(FILE* pFile)
@@ -7,7 +8,7 @@ File::File(FILE* pFile)
 	fseek(pFile, 0, SEEK_END);
 	m_Size = ftell(pFile);
 	m_Position = 0;
-	fseek(pFile, 0, SEEK_SET);  /* same as rewind(f); */
+	fseek(pFile, 0, SEEK_SET);
 
 	m_Value = new char[m_Size + 1];
 	fread(m_Value, 1, m_Size, pFile);
@@ -31,14 +32,30 @@ char* File::ReadLine()
 		size++;
 	}
 
-	char* line = new char[size + 1];
+	char* line = new char[size];
 	unsigned int k = 0;
 
-	for (int i = m_Position; i < m_Position + size; i++) {
+	for (unsigned int i = m_Position; i < m_Position + size; i++) {
 		line[k] = m_Value[i];
 		k++;
 	}
 	m_Position += size + 1;
-	line[size + 1] = 0;
+	line[size] = 0;
 	return line;
+}
+
+bool File::GenTree(Values* values)
+{
+
+	values->m_Name = ReadLine();
+	if (values->m_Name == "**" || feof(m_pFile) == 0)
+	{
+		return false;
+	}
+	values->m_MiddleName = ReadLine();
+	values->m_LastName = ReadLine();
+	values->m_Date = ReadLine();
+	values->m_Death = ReadLine();
+	values->m_Place = ReadLine();
+	return true;
 }

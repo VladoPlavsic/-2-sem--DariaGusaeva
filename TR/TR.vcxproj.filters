@@ -21,10 +21,19 @@
     <ClCompile Include="src\list\tree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\list\treeconsole.cpp">
+    <ClCompile Include="src\additional\filereader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\additional\filereader.cpp">
+    <ClCompile Include="src\array\array.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\logging\console.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\logging\file.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\additional\calculator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,14 +41,27 @@
     <ClInclude Include="src\list\tree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\list\treeconsole.h">
+    <ClInclude Include="src\additional\filereader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\additional\filereader.h">
+    <ClInclude Include="src\additional\values.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\array\array.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\logging\console.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\logging\file.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\additional\calculator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\information\example1.txt" />
+    <Text Include="src\information\example2.txt" />
   </ItemGroup>
 </Project>
