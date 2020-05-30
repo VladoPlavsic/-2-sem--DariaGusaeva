@@ -11,6 +11,7 @@ File::File(FILE* pFile)
 	fseek(pFile, 0, SEEK_SET);
 
 	m_Value = new char[m_Size + 1];
+	memset(m_Value, 0, m_Size * (sizeof m_Value[0]));
 	fread(m_Value, 1, m_Size, pFile);
 }
 
