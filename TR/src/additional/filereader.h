@@ -11,7 +11,7 @@ struct File
 	char* m_Value;
 
 	File(FILE* pFile);
-	void ToObject(Values* values);
+	bool ToObject(Values* values);
 	char* ReadLine();
 	bool GenTree(Values* values);
 
@@ -19,5 +19,4 @@ struct File
 	{
 		fclose(m_pFile);
 	}
-
 };

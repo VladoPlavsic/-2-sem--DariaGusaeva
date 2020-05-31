@@ -143,6 +143,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\additional\calculator.cpp" />
+    <ClCompile Include="src\additional\date.cpp" />
     <ClCompile Include="src\additional\filereader.cpp" />
     <ClCompile Include="src\array\array.cpp" />
     <ClCompile Include="src\list\tree.cpp" />
@@ -152,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\additional\calculator.h" />
+    <ClInclude Include="src\additional\date.h" />
     <ClInclude Include="src\additional\filereader.h" />
     <ClInclude Include="src\additional\values.h" />
     <ClInclude Include="src\array\array.h" />
@@ -162,6 +164,7 @@
   <ItemGroup>
     <Text Include="src\information\example1.txt" />
     <Text Include="src\information\example2.txt" />
+    <Text Include="src\information\tests.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

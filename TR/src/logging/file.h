@@ -20,5 +20,4 @@ struct Writer
 	{
 		fclose(m_pFile);
 	}
-
 };

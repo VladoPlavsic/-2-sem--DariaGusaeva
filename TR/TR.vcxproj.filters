@@ -36,6 +36,9 @@
     <ClCompile Include="src\additional\calculator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\additional\date.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\list\tree.h">
@@ -59,9 +62,13 @@
     <ClInclude Include="src\additional\calculator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\additional\date.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\information\example1.txt" />
     <Text Include="src\information\example2.txt" />
+    <Text Include="src\information\tests.txt" />
   </ItemGroup>
 </Project>

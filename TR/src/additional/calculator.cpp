@@ -21,7 +21,7 @@ bool Calculator(const std::string* date_root, const std::string* date_new)
 
 bool IsMoscow(const std::string* place)
 {
-	if (place->compare("ĞœĞ¾ÑĞºĞ²Ğ°") == 0 || place->compare("Moskva") == 0 || place->compare("Moscow") == 0)
+	if (place->compare("Ìîñêâà") == 0 || place->compare("Moskva") == 0 || place->compare("Moscow") == 0)
 		return true;
 	return false;
 }

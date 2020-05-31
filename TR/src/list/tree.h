@@ -6,7 +6,7 @@ namespace linked_tree {
 
 	struct Human {
 
-		//РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ С‡РµР»РѕРІРµРєРµ
+		//информация о человеке
 		std::string m_MiddleName;
 		std::string m_Name;
 		std::string m_LastName;
@@ -16,15 +16,15 @@ namespace linked_tree {
 
 		bool m_Printed;
 
-		//СЃРІСЏР·С‹
+		//связы
 		Human* m_Left;
 		Human* m_Right;
 		Human* m_Parent;
 
-		//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+		//конструктор
 		Human(const Values& values, Human* left, Human* right, Human* parent)
 		{
-			m_MiddleName = values.m_MiddleName;
+			m_MiddleName = values.m_MiddleName;	
 			m_Name = values.m_Name;
 			m_LastName = values.m_LastName;
 			m_Date = values.m_Date;
@@ -37,7 +37,6 @@ namespace linked_tree {
 			m_Parent = parent;
 			m_Printed = values.m_Printed;
 		}
-
 	};
 
 	struct Tree {
@@ -45,27 +44,27 @@ namespace linked_tree {
 		Human* m_First;
 		Human* m_Current;
 
-		//РїСЂРѕРІРµСЂРёС‚СЊ Р»РµРІС‹Р№
+		//проверить левый
 		Human* CheckLeft();
-		//РїСЂРѕРІРµСЂРёС‚СЊ РїСЂР°РІС‹Р№
+		//проверить правый
 		Human* CheckRight();
-		//РџСЂРѕРІРµСЂРёС‚ С‚РµРєСѓС‰РёР№
+		//Проверит текущий
 		Human* CheckCurrent();
 
-		//РїСЂРѕРІРµСЂРёС‚ РЅР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёРµ РїРµСЂРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
+		//проверит на существование первого элемента
 		bool CheckFirst();
 
-		//СЃРѕР·РґР°РЅРёРµ РїСѓСЃС‚РѕРіРѕ РґРµСЂРµРІР°
+		//создание пустого дерева
 		void CreateFirst(const Values& value);
-		//СЃРґРµР»Р°С‚СЊ С‚РµРєСѓС‰РёРј РєРѕСЂРµРЅСЊ РґРµСЂРµРІР°;
+		//сделать текущим корень дерева;
 		void Root();
-		//СЃРґРµР»Р°С‚СЊ С‚РµРєСѓС‰РёРј Р»РµРІРѕРµ РїРѕРґРґРµСЂРµРІРѕ
+		//сделать текущим левое поддерево
 		void Left();
-		//СЃРґРµР»Р°С‚СЊ С‚РµРєСѓС‰РёРј РїСЂР°РІРѕРµ РїРѕРґРґРµСЂРµРІРѕ 
+		//сделать текущим правое поддерево 
 		void Right();
-		//СЃРґРµР»Р°С‚СЊ С‚РµРєСѓС‰РёРј СЂРѕРґРёС‚РµР»СЊСЃРєСѓСЋ РІРµСЂС€РёРЅСѓ РґР»СЏ С‚РµРєСѓС‰РµР№ РІРµСЂС€РёРЅС‹
+		//сделать текущим родительскую вершину для текущей вершины
 		void Parent();
-		//СѓР·РЅР°С‚СЊ Р·РЅР°С‡РµРЅРёРµ С‚РµРєСѓС‰РµР№ РІРµСЂС€РёРЅС‹;
+		//узнать значение текущей вершины;
 		void GetValue(const char& c);
 		void ChangeName(std::string* name);
 		void ChangeSurname(std::string* middleName);
@@ -73,17 +72,17 @@ namespace linked_tree {
 		void ChangeDate(std::string* date);
 		void ChangeDeath(std::string* death);
 		void ChangePlace(std::string* place);
-		//РёР·РјРµРЅРёС‚СЊ Р·РЅР°С‡РµРЅРёРµ С‚РµРєСѓС‰РµР№ РІРµСЂС€РёРЅС‹;
+		//изменить значение текущей вершины;
 		void ChangeAll(const Values& human);
-		//СЃРѕР·РґР°С‚СЊ Р»РµРІРѕРµ РїРѕРґРґРµСЂРµРІРѕ РґР»СЏ С‚РµРєСѓС‰РµР№ РІРµСЂС€РёРЅС‹;
+		//создать левое поддерево для текущей вершины;
 		void AddLeft(const Values& human);
-		//СЃРѕР·РґР°С‚СЊ РїСЂР°РІРѕРµ РїРѕРґРґРµСЂРµРІРѕ РґР»СЏ С‚РµРєСѓС‰РµР№ РІРµСЂС€РёРЅС‹;
+		//создать правое поддерево для текущей вершины;
 		void AddRight(const Values& human);
-		//РїСЂРѕРІРµСЂРєР° РЅР° РїСѓСЃС‚РѕС‚Сѓ РґРµСЂРµРІР°(РїРѕРґРґРµСЂРµРІР°, РЅР°С‡РёРЅР°СЋС‰РµРіРѕСЃСЏ СЃ С‚РµРєСѓС‰РµР№ РІРµСЂС€РёРЅС‹);
+		//проверка на пустоту дерева(поддерева, начинающегося с текущей вершины);
 		bool CheckIfEmpty();
-		//РЈРґР°Р»РёС‚СЊ РґРµСЂРµРІРѕ
+		//Удалить дерево
 		void Delete();
-		//РЎР°РјС‹Р№ Р»РµРІС‹Р№ СЌР»РµРјРµРЅС‚
+		//Самый левый элемент
 		void LeftMost();
 		void CreateFromFile();
 		bool CompareDates(const std::string* date_root, const std::string* date_new);

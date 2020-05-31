@@ -2,6 +2,7 @@
 
 #include "../additional/filereader.h"
 #include "../additional/calculator.h"
+#include "../additional/date.h"
 
 namespace array_tree {
 
@@ -17,7 +18,7 @@ namespace array_tree {
 			m_Current = 0;
 			return;
 		}
-		printf("Ð£Ð¶Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚ ÐºÐ¾Ñ€ÐµÐ½ÑŒ!\n");
+		printf("Óæå ñóùåñòâóåò êîðåíü!\n");
 	}
 
 	void Tree::Root()
@@ -52,7 +53,7 @@ namespace array_tree {
 		m_Current = CheckRight() != nullptr ? (m_Current * 2) + 2 : m_Current;
 	}
 
-	//ÑÐ´ÐµÐ»Ð°Ñ‚ÑŒ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¼ Ñ€Ð¾Ð´Ð¸Ñ‚ÐµÐ»ÑŒÑÐºÑƒÑŽ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñƒ Ð´Ð»Ñ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¹ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñ‹(Ð´Ð»Ñ ÑƒÐ´Ð¾Ð±ÑÑ‚Ð²Ð° Ð¼Ð¾Ð¶Ð½Ð¾ Ð² ÑÐ¿Ð¾ÑÐ¾Ð±Ðµ 1 Ð²Ð²ÐµÑÑ‚Ð¸ Ñ‚Ñ€ÐµÑ‚ÑŒÑŽ ÑÐ²ÑÐ·ÑŒ â€“ Ð¾Ð±Ñ€Ð°Ñ‚Ð½ÑƒÑŽ ÑÐ²ÑÐ·ÑŒ Ñ Ñ€Ð¾Ð´Ð¸Ñ‚ÐµÐ»ÑŒÑÐºÐ¾Ð¹ Ð²ÐµÑ€ÑˆÐ¸Ð½Ð¾Ð¹, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð½Ðµ Ð¸ÑÐºÐ°Ñ‚ÑŒ ÐµÐµ Ð¿Ð¾ Ð²ÑÐµÐ¼Ñƒ Ð´ÐµÑ€ÐµÐ²Ñƒ â€“ Ð¢Ñ€Ñ‘Ñ…ÑÐ²ÑÐ·Ð½Ñ‹Ð¹ ÑÐ¿Ð¸ÑÐ¾Ðº);
+	//ñäåëàòü òåêóùèì ðîäèòåëüñêóþ âåðøèíó äëÿ òåêóùåé âåðøèíû(äëÿ óäîáñòâà ìîæíî â ñïîñîáå 1 ââåñòè òðåòüþ ñâÿçü – îáðàòíóþ ñâÿçü ñ ðîäèòåëüñêîé âåðøèíîé, ÷òîáû íå èñêàòü åå ïî âñåìó äåðåâó – Òð¸õñâÿçíûé ñïèñîê);
 	void Tree::Parent()
 	{
 		if (m_Current != 0)
@@ -61,58 +62,58 @@ namespace array_tree {
 			m_Current = 0;
 	}
 
-	//ÑƒÐ·Ð½Ð°Ñ‚ÑŒ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¹ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñ‹;
+	//óçíàòü çíà÷åíèå òåêóùåé âåðøèíû;
 	void Tree::GetValue(const char& c)
 	{
 		if (c == 'a')
 			CheckCurrent()->m_Printed = true;
-		printf("Ð˜Ð¼Ñ: %s\n", m_Values[m_Current]->m_Name.c_str());
-		printf("ÐžÑ‚Ñ‡ÐµÑÑ‚Ð²Ð¾: %s\n", m_Values[m_Current]->m_MiddleName.c_str());
-		printf("Ð¤Ð°Ð¼Ð¸Ð»Ð¸Ñ: %s\n", m_Values[m_Current]->m_LastName.c_str());
-		printf("Ð”Ð°Ñ‚Ð° Ñ€Ð¾Ð¶Ð´ÐµÐ½Ð¸Ñ: %s\n", m_Values[m_Current]->m_Date.c_str());
+		printf("Èìÿ: %s\n", m_Values[m_Current]->m_Name.c_str());
+		printf("Îò÷åñòâî: %s\n", m_Values[m_Current]->m_MiddleName.c_str());
+		printf("Ôàìèëèÿ: %s\n", m_Values[m_Current]->m_LastName.c_str());
+		printf("Äàòà ðîæäåíèÿ: %s\n", m_Values[m_Current]->m_Date.c_str());
 		if (!m_Values[m_Current]->m_Death.empty())
-			printf("Ð”Ð°Ñ‚Ð° ÑÐ¼ÐµÑ€Ñ‚Ð¸: %s\n", m_Values[m_Current]->m_Death.c_str());
+			printf("Äàòà ñìåðòè: %s\n", m_Values[m_Current]->m_Death.c_str());
 		if (!m_Values[m_Current]->m_Place.empty())
-			printf("ÐœÐµÑÑ‚Ð¾ Ñ€Ð¾Ð¶Ð´ÐµÐ½Ð¸Ñ: %s\n", m_Values[m_Current]->m_Place.c_str());
+			printf("Ìåñòî ðîæäåíèÿ: %s\n", m_Values[m_Current]->m_Place.c_str());
 	}
 
 	void Tree::ChangeName(std::string* name)
 	{
 		m_Values[m_Current]->m_Name = *name;
-		printf("Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð¾ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð¸Ð¼ÐµÐ½Ð¸!\n");
+		printf("Èçìåíåíî çíà÷åíèå èìåíè!\n");
 	}
 
 	void Tree::ChangeSurname(std::string* middleName)
 	{
 		m_Values[m_Current]->m_MiddleName = *middleName;
-		printf("Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð¾ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð¾Ñ‚Ñ‡ÐµÑÑ‚Ð²Ð°!\n");
+		printf("Èçìåíåíî çíà÷åíèå îò÷åñòâà!\n");
 	}
 
 	void Tree::ChangeLastName(std::string* lastName)
 	{
 		m_Values[m_Current]->m_LastName = *lastName;
-		printf("Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð¾ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ñ„Ð°Ð¼Ð¸Ð»Ð¸Ð¸!\n");
+		printf("Èçìåíåíî çíà÷åíèå ôàìèëèè!\n");
 	}
 
 	void Tree::ChangeDate(std::string* date)
 	{
 		m_Values[m_Current]->m_Date = *date;
-		printf("Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð¾ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð´Ð°Ñ‚Ð¸ Ñ€Ð¾Ð¶Ð´ÐµÐ½Ð¸Ñ!\n");
+		printf("Èçìåíåíî çíà÷åíèå äàòè ðîæäåíèÿ!\n");
 	}
 
 	void Tree::ChangeDeath(std::string* death)
 	{
 		m_Values[m_Current]->m_Death = *death;
-		printf("Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð¾ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð´Ð°Ñ‚Ð¸ ÑÐ¼ÐµÑ€Ñ‚Ð¸!\n");
+		printf("Èçìåíåíî çíà÷åíèå äàòè ñìåðòè!\n");
 	}
 
 	void Tree::ChangePlace(std::string* place)
 	{
 		m_Values[m_Current]->m_Place = *place;
-		printf("Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð¾ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð¼ÐµÑÑ‚Ð° Ñ€Ð¾Ð¶Ð´ÐµÐ½Ð¸Ñ!\n");
+		printf("Èçìåíåíî çíà÷åíèå ìåñòà ðîæäåíèÿ!\n");
 	}
 
-	//Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¹ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñ‹;
+	//èçìåíèòü çíà÷åíèå òåêóùåé âåðøèíû;
 	void Tree::ChangeAll(const Values& human)
 	{
 		m_Values[m_Current]->m_Name = human.m_Name;
@@ -123,35 +124,37 @@ namespace array_tree {
 			m_Values[m_Current]->m_Death = human.m_Death;
 		if (!human.m_Place.empty())
 			m_Values[m_Current]->m_Place = human.m_Place;
-		printf("Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸ Ð²ÑÐµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ!\n");
+		printf("Èçìåíåíè âñå çíà÷åíèÿ!\n");
 	}
 
-	//ÑÐ¾Ð·Ð´Ð°Ñ‚ÑŒ Ð»ÐµÐ²Ð¾Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾ Ð´Ð»Ñ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¹ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñ‹;
+	//ñîçäàòü ëåâîå ïîääåðåâî äëÿ òåêóùåé âåðøèíû;
 	void Tree::AddLeft(const Values& human)
 	{
-		if (CheckLeft() == nullptr) {
+		if (CheckLeft() == nullptr) 
+		{
 			m_Values[m_Current * 2 + 1] = new Values(human);
 			Left();
-			printf("Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð½Ð¾ Ð»ÐµÐ²Ð¾Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾\n");
+			printf("Äîáàâëåííî ëåâîå ïîääåðåâî\n");
 			return;
 		}
-		printf("Ð›ÐµÐ²Ð¾Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾ Ð´Ð»Ñ Ð´Ð°Ð½Ð½Ð¾Ð¹ Ð²ÐµÑ€ÑˆÐ¸Ð½Ð¸ ÑƒÐ¶Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚!");
+		printf("Ëåâîå ïîääåðåâî äëÿ äàííîé âåðøèíû óæå ñóùåñòâóåò!");
 	}
 
-	//ÑÐ¾Ð·Ð´Ð°Ñ‚ÑŒ Ð¿Ñ€Ð°Ð²Ð¾Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾ Ð´Ð»Ñ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¹ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñ‹;
+	//ñîçäàòü ïðàâîå ïîääåðåâî äëÿ òåêóùåé âåðøèíû;
 	void Tree::AddRight(const Values& human)
 	{
-		if (CheckRight() == nullptr) {
+		if (CheckRight() == nullptr) 
+		{
 			m_Values[m_Current * 2 + 2] = new Values(human);
 			Right();
-			printf("Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð½Ð¾ Ð¿Ñ€Ð°Ð²Ð¾Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾\n");
+			printf("Äîáàâëåííî ïðàâîå ïîääåðåâî\n");
 			return;
 		}
-		printf("ÐŸÑ€Ð°Ð²Ð¾Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð¾ Ð´Ð»Ñ Ð´Ð°Ð½Ð½Ð¾Ð¹ Ð²ÐµÑ€ÑˆÐ¸Ð½Ð¸ ÑƒÐ¶Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚!");
+		printf("Ïðàâîå ïîääåðåâî äëÿ äàííîé âåðøèíû óæå ñóùåñòâóåò!");
 
 	}
 
-	//Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð½Ð° Ð¿ÑƒÑÑ‚Ð¾Ñ‚Ñƒ Ð´ÐµÑ€ÐµÐ²Ð°(Ð¿Ð¾Ð´Ð´ÐµÑ€ÐµÐ²Ð°, Ð½Ð°Ñ‡Ð¸Ð½Ð°ÑŽÑ‰ÐµÐ³Ð¾ÑÑ Ñ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¹ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñ‹);
+	//ïðîâåðêà íà ïóñòîòó äåðåâà(ïîääåðåâà, íà÷èíàþùåãîñÿ ñ òåêóùåé âåðøèíû);
 	bool Tree::CheckIfEmpty()
 	{
 		return (CheckLeft() != nullptr || CheckRight() != nullptr) ? false : true;
@@ -192,7 +195,7 @@ namespace array_tree {
 			{
 				delete m_Values[0];
 				m_Values[0] = nullptr;
-				printf("Ð”ÐµÑ€ÐµÐ²Ð¾ ÑƒÐ´Ð°Ð»ÐµÐ½Ð½Ð¾!");
+				printf("Äåðåâî óäàëåííî! \n");
 				return;
 			}
 		}
@@ -201,24 +204,33 @@ namespace array_tree {
 	void Tree::CreateFromFile()
 	{
 		FILE* pFile = fopen("src\\information\\example1.txt", "r");
+		if (pFile == nullptr) {
+			printf("Îøèáêà! Íå ñìîãëè îòêðûò äàííûé ôàéë! \n");
+			return;
+		}
 		File* f = new File(pFile);
 		while (f->m_Position < f->m_Size) {
 			Values values;
-			f->ToObject(&values);
+			if (!f->ToObject(&values)) {
+				printf("Îøèáêà â ôàéëå! Äàòà! \n");
+				continue;
+			}
+			if (!CheckDate(&values.m_Date) || (!CheckDate(&values.m_Death) && values.m_Death.size() > 1))
+				continue;
 			if (m_Values[0] == nullptr)
 				CreateFirst(values);
 			else
 			{
 				m_Current = 0;
 				while (true) {
-					if (CompareDates(&CheckCurrent()->m_Date, &values.m_Date) && CheckRight() != nullptr)
+					if (CompareDates(&m_Values[m_Current]->m_Date, &values.m_Date) && CheckRight() != nullptr)
 						Right();
-					else if (CompareDates(&CheckCurrent()->m_Date, &values.m_Date) && CheckRight() == nullptr)
+					else if (CompareDates(&m_Values[m_Current]->m_Date, &values.m_Date) && CheckRight() == nullptr)
 					{
 						AddRight(values);
 						break;
 					}
-					else if (!CompareDates(&CheckCurrent()->m_Date, &values.m_Date) && CheckLeft() != nullptr)
+					else if (!CompareDates(&m_Values[m_Current]->m_Date, &values.m_Date) && CheckLeft() != nullptr)
 						Left();
 					else
 					{
@@ -228,7 +240,9 @@ namespace array_tree {
 				}
 			}
 		}
+		fclose(pFile);
 	}
+
 
 	bool Tree::CompareDates(const std::string* date_root, const std::string* date_new)
 	{
@@ -255,7 +269,6 @@ namespace array_tree {
 			yyyy_root[i] = date_root->at(i + 6);
 			yyyy_new[i] = date_new->at(i + 6);
 		}
-
 		if (std::stoi(yyyy_new) < std::stoi(yyyy_root))
 			return false;
 		else if (std::stoi(yyyy_new) > std::stoi(yyyy_root))
@@ -400,7 +413,17 @@ namespace array_tree {
 
 	void Tree::GenTree()
 	{
+		if (!CheckFirst())
+		{
+			printf("Îøèáêà! Äåðåâî óæå ñóùåñòâóåò, ïîæàëóéñòà óäàëèòå åãî! \n");
+			return;
+		}
+
 		FILE* pFile = fopen("src\\information\\example2.txt", "r");
+		if (pFile == nullptr) {
+			printf("Îøèáêà! Íå ñìîãëè îòêðûò äàííûé ôàéë! \n");
+			return;
+		}
 		File* f = new File(pFile);
 		bool check = true;
 		while (f->m_Position < f->m_Size) {
@@ -435,6 +458,7 @@ namespace array_tree {
 				}
 			}
 		}
+		fclose(pFile);
 
 	}
 	void Tree::SearchGen()

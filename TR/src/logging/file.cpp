@@ -8,6 +8,8 @@ Writer::Writer()
 
 void Writer::Print(array_tree::Tree* tree)
 {
+	if (tree->CheckFirst())
+		return;
 	tree->Root();
 	Write(tree);
 	while (true) {
@@ -28,18 +30,23 @@ void Writer::Print(array_tree::Tree* tree)
 		if (tree->CheckRight() == nullptr)
 			fwrite("**\n", sizeof(char), 3, m_pFile);
 		tree->Parent();
-		if (tree->m_Current == 0 && tree->CheckRight() == nullptr && tree->CheckLeft() == nullptr)
+		if (tree->CheckCurrent() == tree->m_Values[0] && tree->CheckRight() == nullptr && tree->CheckLeft() == nullptr)
 			break;
-		else if (tree->m_Current == 0 && tree->CheckRight() == nullptr && tree->CheckLeft() != nullptr)
+		else if (tree->CheckCurrent() == tree->m_Values[0] && tree->CheckRight() == nullptr && tree->CheckLeft() != nullptr)
 		{
 			if (tree->CheckLeft()->m_Printed)
 				break;
 			else
 				continue;
 		}
-		else if (tree->m_Current == 0 && tree->CheckRight() != nullptr && tree->CheckLeft() != nullptr)
+		else if (tree->CheckCurrent() == tree->m_Values[0] && tree->CheckRight() != nullptr && tree->CheckLeft() == nullptr)
 		{
 			if (tree->CheckRight()->m_Printed)
+				break;
+		}
+		else if (tree->CheckCurrent() == tree->m_Values[0] && tree->CheckRight() != nullptr && tree->CheckLeft() != nullptr)
+		{
+			if (tree->CheckRight()->m_Printed && tree->CheckLeft()->m_Printed)
 				break;
 		}
 	}
@@ -48,8 +55,12 @@ void Writer::Print(array_tree::Tree* tree)
 
 void Writer::Print(linked_tree::Tree* tree)
 {
+	if (tree->CheckFirst())
+		return;
 	tree->Root();
 	Write(tree);
+	if (tree->CheckIfEmpty())
+		return;
 	while (true) {
 		while (tree->CheckLeft() != nullptr && !tree->CheckLeft()->m_Printed)
 		{
@@ -77,9 +88,14 @@ void Writer::Print(linked_tree::Tree* tree)
 			else
 				continue;
 		}
-		else if (tree->m_Current == tree->m_First && tree->CheckRight() != nullptr && tree->CheckLeft() != nullptr)
+		else if (tree->m_Current == tree->m_First && tree->CheckRight() != nullptr && tree->CheckLeft() == nullptr)
 		{
 			if (tree->CheckRight()->m_Printed)
+				break;
+		}
+		else if (tree->m_Current == tree->m_First && tree->CheckRight() != nullptr && tree->CheckLeft() != nullptr)
+		{
+			if (tree->CheckRight()->m_Printed && tree->CheckLeft()->m_Printed)
 				break;
 		}
 	}
